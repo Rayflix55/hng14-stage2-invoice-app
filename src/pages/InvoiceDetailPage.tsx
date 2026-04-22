@@ -62,7 +62,7 @@ export default function InvoiceDetailPage() {
         Go Back
       </Link>
 
-      <header className="flex items-center justify-between p-6 mb-6 bg-white dark:bg-card-dark rounded-lg shadow-sm sm:p-8">
+      <header className="flex items-center justify-between p-6 mb-6 bg-card-light dark:bg-card-dark rounded-lg shadow-sm sm:p-8">
         <div className="flex items-center justify-between w-full sm:justify-start gap-5">
           <span className="text-sm text-text-02 dark:text-slate-300">Status</span>
           <StatusBadge status={invoice.status} />
@@ -92,7 +92,7 @@ export default function InvoiceDetailPage() {
         </div>
       </header>
 
-      <main className="p-6 bg-white dark:bg-card-dark rounded-lg shadow-sm sm:p-12 mb-12 sm:mb-0">
+      <main className="p-6 bg-card-light dark:bg-card-dark rounded-lg shadow-sm sm:p-12 mb-12 sm:mb-0">
         {/* Invoice ID & Description */}
         <div className="flex flex-col sm:flex-row sm:justify-between mb-8">
           <div className="mb-8 sm:mb-0">

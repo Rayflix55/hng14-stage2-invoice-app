@@ -9,7 +9,7 @@ export default function InvoiceCard({ invoice }: { invoice: Invoice }) {
   return (
     <Link 
       to={`/invoice/${invoice.id}`}
-      className="group grid grid-cols-2 md:grid-cols-5 items-center p-6 mb-4 bg-white dark:bg-card-dark rounded-lg shadow-[0_10px_10px_-10px_rgba(72,84,159,0.1)] border border-transparent hover:border-primary transition-all text-left"
+      className="group grid grid-cols-2 md:grid-cols-5 items-center p-6 mb-4 bg-card-light dark:bg-card-dark rounded-lg shadow-[0_10px_10px_-10px_rgba(72,84,159,0.1)] border border-transparent hover:border-primary transition-all text-left"
       id={`invoice-${invoice.id}`}
     >
       {/* Left section: ID and Client Name (on mobile) */}

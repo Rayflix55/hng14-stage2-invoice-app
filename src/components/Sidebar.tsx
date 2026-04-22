@@ -6,12 +6,12 @@ export default function Sidebar() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <aside className="fixed top-0 left-0 w-full h-20 bg-[#373B53] flex flex-row items-center justify-between z-50 lg:w-[103px] lg:h-full lg:flex-col lg:rounded-r-[20px]">
+    <aside className="fixed top-0 left-0 w-full h-20 bg-nav-bg flex flex-row items-center justify-between z-50 lg:w-25.75 lg:h-full lg:flex-col lg:rounded-r-[20px]">
       <div className="flex items-center justify-between w-full h-full lg:flex-col">
         {/* Logo Section */}
         <Link 
           to="/" 
-          className="relative flex items-center justify-center h-20 w-20 bg-primary rounded-r-[20px] lg:w-full lg:h-[103px]"
+          className="relative flex items-center justify-center h-20 w-20 bg-primary rounded-r-[20px] lg:w-full lg:h-25.75"
           id="logo-link"
         >
           <div className="absolute bottom-0 left-0 w-full h-1/2 bg-primary-light rounded-tl-[20px] rounded-r-[20px]" />
@@ -31,7 +31,7 @@ export default function Sidebar() {
             {theme === 'light' ? <Moon size={20} fill="currentColor" /> : <Sun size={20} fill="currentColor" />}
           </button>
           
-          <div className="w-[1px] h-20 bg-[#494E6E] lg:w-full lg:h-[1px]" />
+          <div className="w-px h-20 bg-[#494E6E] lg:w-full lg:h-px" />
           
           <div className="p-6 lg:p-8">
             <div className="h-8 w-8 rounded-full bg-slate-400 overflow-hidden lg:h-10 lg:w-10">
