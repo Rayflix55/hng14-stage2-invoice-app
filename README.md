@@ -15,7 +15,7 @@ A production-grade, full-stack invoice management application engineered for hig
 
 ### **Backend**
 - **Node.js & Express**: A lightweight but scalable REST API serving as the application's data backbone.
-- **FS-based Persistence**: Simplified server-side storage using a JSON-based database for zero-config local execution.
+- **Cloud Persistence**: Production-grade data storage using **Google Firebase Cloud Firestore**, ensuring data persists across serverless deployments (Vercel).
 - **tsx**: Modern TypeScript execution for the Node runtime, enabling ES Module support out of the box.
 
 ---
@@ -84,8 +84,9 @@ The server exposes a clean RESTful interface for external integrations:
 │   ├── types/           # Global TypeScript interfaces and Enums
 │   ├── App.tsx          # Main routing and provider tree
 │   └── main.tsx         # Framework entry point
-├── server.ts            # Full-stack Express server and API logic
-├── data.json            # Mock database (generated on first boot)
+├── server.ts            # Full-stack Express server with Firebase Admin SDK integration
+├── data.json            # Seed data (used for initial deployment only)
+├── vercel.json          # Serverless routing configuration for Vercel
 ├── tailwind.config.ts   # Advanced Tailwind configuration
 └── tsconfig.json        # Strict TypeScript compiler settings
 ```
@@ -103,8 +104,9 @@ The server exposes a clean RESTful interface for external integrations:
 
 ## ⚖️ Development Philosophy
 
-This project prioritizes **Architectural Honesty**. There is no "simulated" loading or mock persistence. Every interaction in the UI translates into a real network request and a physical write to the server-side filesystem, mirroring production environments.
+This project prioritizes **Architectural Honesty**. There is no "simulated" loading or mock persistence. Every interaction in the UI translates into a real network request and a physical write to the **Firebase Cloud Firestore** database, mirroring production environments.
 
 ---
 
-**Developed by Akpe Raymond Samuel (Rayflix)** *Frontend Engineer & Technical Writer* [X (Twitter)](https://x.com/web3rayflix) | [GitHub](https://github.com/rayflix55) | [LinkedIn](https://www.linkedin.com/in/akpe-samuel-993971329)# hng14-stage1b-profile-card
+## 👨‍💻 Developer
+Developed with precision for the **Frontend Wizards Stage 2** challenge. focus on code quality, type safety, and design fidelity.
