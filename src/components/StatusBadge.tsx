@@ -16,7 +16,7 @@ export default function StatusBadge({ status }: { status: PaymentStatus }) {
 
   return (
     <div className={cn(
-      "flex items-center justify-center gap-2 w-[104px] h-10 rounded-md font-bold capitalize text-sm",
+      "flex items-center justify-center gap-2 w-26 h-10 rounded-md font-bold capitalize text-sm",
       styles[status]
     )}>
       <span className={cn("w-2 h-2 rounded-full", dotStyles[status])} />

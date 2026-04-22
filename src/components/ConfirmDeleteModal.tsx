@@ -19,7 +19,7 @@ export default function ConfirmDeleteModal({ onCancel, onConfirm, invoiceId }: C
   }, [onCancel]);
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+    <div className="fixed inset-0 z-100 flex items-center justify-center p-6">
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -35,7 +35,7 @@ export default function ConfirmDeleteModal({ onCancel, onConfirm, invoiceId }: C
         ref={modalRef}
         role="dialog"
         aria-modal="true"
-        className="relative w-full max-w-md p-8 bg-white dark:bg-dark-card shadow-2xl rounded-lg z-10 sm:p-12"
+        className="relative w-full max-w-md p-8 bg-card-light dark:bg-card-dark shadow-2xl rounded-lg z-10 sm:p-12"
       >
         <h2 className="text-2xl font-bold mb-4">Confirm Deletion</h2>
         <p className="text-sm text-text-secondary dark:text-slate-300 leading-6 mb-4">
@@ -45,7 +45,7 @@ export default function ConfirmDeleteModal({ onCancel, onConfirm, invoiceId }: C
         <div className="flex justify-end gap-2">
           <button 
             onClick={onCancel}
-            className="px-6 py-4 bg-light-bg dark:bg-[#252945] hover:bg-border dark:hover:bg-slate-700 text-text-secondary font-bold text-sm rounded-full transition-all"
+            className="px-6 py-4 bg-bg-light dark:bg-input-border-dark hover:bg-[#DFE3FA] dark:hover:bg-slate-700 text-text-02 font-bold text-sm rounded-full transition-all"
           >
             Cancel
           </button>
