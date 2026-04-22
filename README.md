@@ -1,55 +1,111 @@
-# Invoice Portal - Full-Stack Invoice Management
+# 📊 Invoice Portal - Full-Stack Management System
 
-A professional, feature-rich invoice management application built for the Frontend Wizards Stage 2 task. This application provides a seamless experience for creating, viewing, editing, and managing invoices with a focus on polished UI/UX and full-stack reliability.
+A production-grade, full-stack invoice management application engineered for high-performance and seamless user experiences. Built with a focus on polished UI/UX, robust persistence, and a highly configurable design system.
 
-## 🚀 Setup Instructions
+---
 
-1. **Install Dependencies**:
+## 🛠 Technical Stack
+
+### **Frontend**
+- **React 19 & TypeScript**: Leverages the latest React features for efficient rendering and strictly typed interfaces for developer safety.
+- **Vite 6**: Utilizing the latest iteration of Vite for ultra-fast HMR (Hot Module Replacement) and optimized production builds.
+- **Tailwind CSS 4**: Implementing the next generation of Tailwind, utilizing zero-runtime CSS and advanced CSS variables for a modern styling workflow.
+- **Framer Motion 12**: Orchestrating complex component transitions, including the slide-over invoice forms and interactive modals.
+- **React Router 7**: Managing synchronized navigation and ID-based routing for detailed invoice tracking.
+
+### **Backend**
+- **Node.js & Express**: A lightweight but scalable REST API serving as the application's data backbone.
+- **FS-based Persistence**: Simplified server-side storage using a JSON-based database for zero-config local execution.
+- **tsx**: Modern TypeScript execution for the Node runtime, enabling ES Module support out of the box.
+
+---
+
+## 🎨 Advanced Theming & Design System
+
+The application features a fully reactive, persistent dark/light mode system. Unlike standard implementations, this project uses a hybrid **CSS Variable + Tailwind 4** strategy for maximum performance.
+
+### **Implementation Details**
+- **Class-based Activation**: The `ThemeContext` monitors a `.dark` class injected into the `document.body`.
+- **Reactive Variables**: Colors are defined as CSS variables that swap values dynamically.
+- **Tailwind v4 Selectors**: Configured with a `@custom-variant dark` bridge to ensure Tailwind's `dark:` modifier correctly responds to manual toggles rather than just system preferences.
+
+### **Design Specifications**
+- **Typography**: Primary typeface is **League Spartan**, optimized for readability across all device densities.
+- **Color Fidelity**: Precise hex-code adherence to strict design guidelines (e.g., `#7C5DFA` primary brand color).
+
+---
+
+## 🚀 Getting Started
+
+### **Prerequisites**
+- **Node.js**: Version 18.x or higher is required.
+- **Package Manager**: NPM (standard) or PNPM.
+
+### **Local Deployment**
+1. **Clone and Install**:
    ```bash
    npm install
    ```
-2. **Start the Application**:
+
+2. **Run in Development Mode**:
    ```bash
    npm run dev
    ```
-   *Note: This starts both the Express backend and the Vite frontend in parallel.*
+   *The server will boot on `http://localhost:3000`*.
 
-## 🏗️ Architecture
+3. **Production Build**:
+   ```bash
+   npm run build
+   npm start
+   ```
 
-- **Frontend**: React 19 + TypeScript.
-  - **Routing**: `react-router-dom` handles page transitions between the List and Detail views.
-  - **State Management**:
-    - `ThemeContext`: Manages global light/dark mode and persists state to `LocalStorage`.
-    - Component State: Handles local form data and filter logic.
-  - **Animations**: `framer-motion` (Motion 12) is used for the complex slide-over invoice form and staggered list entry animations.
-  - **Styling**: Tailwind CSS 4 with a custom configuration to match the Figma design system.
-- **Backend**: Express.js server.
-  - **Vite Middleware**: Used in development to provide Hot Module Replacement.
-  - **API**: A RESTful API handling CRUD operations for invoices.
+---
 
-## 💾 Persistence Strategy
+## 📡 API Reference
 
-I implemented a **Node/Express Backend** persistence strategy:
-- **Server-Side Storage**: Invoices are stored in a `data.json` file on the server.
-- **Persistence**: Any changes made via the UI (Create, Update, Delete, Mark as Paid) are synced to the server instantly.
-- **Why?**: While LocalStorage is easier, a backend approach fulfills the "Full-Stack" requirement and ensures data can be accessed across different sessions if the server is hosted centrally.
+The server exposes a clean RESTful interface for external integrations:
 
-## ♿ Accessibility Notes
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| **GET** | `/api/invoices` | Retrieve all invoices |
+| **POST** | `/api/invoices` | Create a new invoice/draft |
+| **PUT** | `/api/invoices/:id` | Update status or details of a specific invoice |
+| **DELETE** | `/api/invoices/:id` | Permanently remove an invoice record |
 
-- **Keyboard Navigation**: The app is fully navigable via keyboard. The `ConfirmDeleteModal` traps focus when open and can be closed with the `ESC` key.
-- **Semantic HTML**: Used appropriate tags like `<main>`, `<nav>`, `<section>`, and `<button>` for screen reader compatibility.
-- **Color Contrast**: Both Light and Dark modes were designed to meet WCAG AA contrast standards.
-- **Labels**: Every form input is associated with a clear label, and error states are visually and programmatically announced.
+---
 
-## ⚖️ Trade-offs
+## 📂 Project Architecture
 
-- **Form Management**: I opted for a custom state-based form management system instead of a library like React Hook Form to maintain maximum control over the complex "Item List" logic within a short timeframe.
-- **Data Persistence**: A simple JSON file was used instead of a database like MongoDB or PostgreSQL to ensure the app "just works" out of the box without external database setup.
+```text
+├── src/
+│   ├── components/      # Atomic UI components and layout wrappers
+│   ├── lib/             # Utility functions (formatting, ID generation, cn helper)
+│   ├── pages/           # High-level route views (List, Detail)
+│   ├── types/           # Global TypeScript interfaces and Enums
+│   ├── App.tsx          # Main routing and provider tree
+│   └── main.tsx         # Framework entry point
+├── server.ts            # Full-stack Express server and API logic
+├── data.json            # Mock database (generated on first boot)
+├── tailwind.config.ts   # Advanced Tailwind configuration
+└── tsconfig.json        # Strict TypeScript compiler settings
+```
 
-## ✨ Bonus Improvements
+---
 
-- **Intelligent ID Generation**: Implemented the precise `#XY1234` ID pattern which persists across edits.
-- **Dynamic Totals**: Real-time calculation of item totals and invoice grand totals during form entry.
-- **Smooth Theming**: The theme transition is handled via a `transition-colors` class to avoid jarring shifts when toggling.
-- **Empty State**: A helpful landing state when no invoices match the current filters.
-# hng14-stage2-invoice-app
+## 💡 Key Technical Features
+
+- **Intelligent ID Generation**: Implements a unique `#XY1234` alphanumeric pattern that remains immutable once an invoice is saved.
+- **Drafting Workflow**: Users can "Save as Draft," bypassing strict schema validation to allow for work-in-progress entries.
+- **Synchronized State**: Real-time arithmetic calculations for Line Items (Quantity x Price) and Grand Totals during form interaction.
+- **Mobile-First Responsive Layout**: A complex grid layout that transitions from a data-heavy desktop dashboard to a touch-optimized mobile feed.
+
+---
+
+## ⚖️ Development Philosophy
+
+This project prioritizes **Architectural Honesty**. There is no "simulated" loading or mock persistence. Every interaction in the UI translates into a real network request and a physical write to the server-side filesystem, mirroring production environments.
+
+---
+
+## 👨‍💻 Developer
+Developed with precision for the **Frontend Wizards Stage 2** challenge. focus on code quality, type safety, and design fidelity.
