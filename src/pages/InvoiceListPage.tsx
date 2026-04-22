@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from 'motion/react';
 function EmptyState() {
   return (
     <div className="flex flex-col items-center justify-center py-24 text-center">
-      <div className="relative mb-10 w-[242px] h-[200px]">
+      <div className="relative mb-10 w-60.5 h-50">
         {/* Simplified SVG approximation of the illustration in image 2 */}
         <svg width="242" height="200" viewBox="0 0 242 200" fill="none" xmlns="http://www.w3.org/2000/svg">
           {/* Background Envelopes */}
@@ -57,14 +57,14 @@ export default function InvoiceListPage() {
   };
 
   const toggleFilter = (status: PaymentStatus) => {
-    setFilter(prev => 
+    setFilter((prev: PaymentStatus[]) => 
       prev.includes(status) 
-        ? prev.filter(s => s !== status) 
+        ? prev.filter((s: PaymentStatus) => s !== status) 
         : [...prev, status]
     );
   };
 
-  const filteredInvoices = invoices.filter(inv => 
+  const filteredInvoices = invoices.filter((inv: Invoice) => 
     filter.length === 0 || filter.includes(inv.status)
   );
 

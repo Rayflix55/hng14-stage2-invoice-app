@@ -80,22 +80,22 @@ export default function InvoiceForm({ onClose, onSave, existingInvoice }: Invoic
       price: 0,
       total: 0,
     };
-    setFormData(prev => ({
+    setFormData((prev: Partial<Invoice>) => ({
       ...prev,
       items: [...(prev.items || []), newItem]
     }));
   };
 
   const removeItem = (id: string) => {
-    setFormData(prev => ({
+    setFormData((prev: Partial<Invoice>) => ({
       ...prev,
-      items: prev.items?.filter(item => item.id !== id)
+      items: prev.items?.filter((item: InvoiceItem) => item.id !== id)
     }));
   };
 
   const updateItem = (id: string, field: keyof InvoiceItem, value: any) => {
-    setFormData(prev => {
-      const newItems = (prev.items || []).map(item => {
+    setFormData((prev: Partial<Invoice>) => {
+      const newItems = (prev.items || []).map((item: InvoiceItem) => {
         if (item.id === id) {
           const updated = { ...item, [field]: value };
           if (field === 'quantity' || field === 'price') {
@@ -131,7 +131,7 @@ export default function InvoiceForm({ onClose, onSave, existingInvoice }: Invoic
         animate={{ x: 0 }}
         exit={{ x: '-100%' }}
         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        className="absolute top-0 left-0 w-full h-full max-w-2xl bg-white dark:bg-[#141625] overflow-y-auto lg:top-0 lg:left-[103px] lg:h-full lg:max-w-[719px]"
+        className="absolute top-0 left-0 w-full h-full max-w-2xl bg-card-light dark:bg-card-dark overflow-y-auto lg:top-0 lg:left-[103px] lg:h-full lg:max-w-[719px]"
       >
         <div className="p-8 pb-32 md:p-14">
           <button onClick={onClose} className="flex items-center gap-6 font-bold text-sm mb-8 hover:text-text-02 md:hidden">
@@ -279,16 +279,16 @@ export default function InvoiceForm({ onClose, onSave, existingInvoice }: Invoic
               <div>
                 <label className="block text-sm text-text-02 mb-2">Payment Terms</label>
                 <div className="relative group">
-                  <select 
-                    value={formData.paymentTerms}
-                    onChange={e => setFormData({...formData, paymentTerms: Number(e.target.value)})}
-                    className={cn(inputClasses(), "appearance-none relative z-10 bg-transparent dark:bg-transparent cursor-pointer")}
-                  >
-                    <option value={1} className="dark:bg-[#252945]">Net 1 Day</option>
-                    <option value={7} className="dark:bg-[#252945]">Net 7 Days</option>
-                    <option value={14} className="dark:bg-[#252945]">Net 14 Days</option>
-                    <option value={30} className="dark:bg-[#252945]">Net 30 Days</option>
-                  </select>
+                    <select 
+                      value={formData.paymentTerms}
+                      onChange={e => setFormData({...formData, paymentTerms: Number(e.target.value)})}
+                      className={cn(inputClasses(), "appearance-none relative z-10 bg-transparent dark:bg-transparent cursor-pointer")}
+                    >
+                      <option value={1} className="dark:bg-input-border-dark">Net 1 Day</option>
+                      <option value={7} className="dark:bg-input-border-dark">Net 7 Days</option>
+                      <option value={14} className="dark:bg-input-border-dark">Net 14 Days</option>
+                      <option value={30} className="dark:bg-input-border-dark">Net 30 Days</option>
+                    </select>
                   <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-primary group-hover:rotate-180 transition-transform">
                     <svg width="11" height="7" viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M1 1L5.5 5.5L10 1" stroke="currentColor" strokeWidth="2"/>
@@ -364,7 +364,7 @@ export default function InvoiceForm({ onClose, onSave, existingInvoice }: Invoic
 
                 <button 
                   onClick={addItem}
-                  className="w-full h-12 mt-4 bg-bg-light dark:bg-[#252945] hover:bg-[#DFE3FA] dark:hover:bg-white dark:hover:text-text-02 text-text-02 font-bold text-sm rounded-full transition-colors flex items-center justify-center gap-2"
+                  className="w-full h-12 mt-4 bg-bg-light dark:bg-input-border-dark hover:bg-[#DFE3FA] dark:hover:bg-white dark:hover:text-text-02 text-text-02 font-bold text-sm rounded-full transition-colors flex items-center justify-center gap-2"
                 >
                   <Plus size={16} /> Add New Item
                 </button>
@@ -375,11 +375,11 @@ export default function InvoiceForm({ onClose, onSave, existingInvoice }: Invoic
         </div>
 
         {/* Action Footer */}
-        <div className="sticky bottom-0 left-0 w-full p-8 md:px-14 bg-white dark:bg-[#141625] flex justify-between items-center shadow-[0_-20px_40px_rgba(0,0,0,0.1)] rounded-tr-[20px]">
+        <div className="sticky bottom-0 left-0 w-full p-8 md:px-14 bg-card-light dark:bg-card-dark flex justify-between items-center shadow-[0_-20px_40px_rgba(0,0,0,0.1)] rounded-tr-[20px]">
           <div>
             <button 
               onClick={onClose}
-              className="px-6 py-4 bg-bg-light dark:bg-[#252945] hover:bg-[#DFE3FA] dark:hover:bg-white dark:hover:text-text-02 text-text-02 font-bold text-sm rounded-full transition-all"
+              className="px-6 py-4 bg-bg-light dark:bg-input-border-dark hover:bg-[#DFE3FA] dark:hover:bg-white dark:hover:text-text-02 text-text-02 font-bold text-sm rounded-full transition-all"
             >
               {isEditing ? 'Cancel' : 'Discard'}
             </button>
@@ -388,7 +388,7 @@ export default function InvoiceForm({ onClose, onSave, existingInvoice }: Invoic
             {!isEditing && (
               <button 
                 onClick={() => handleSave('draft')}
-                className="px-6 py-4 bg-[#373B53] hover:bg-black text-[#888EB0] font-bold text-sm rounded-full transition-all"
+                className="px-6 py-4 bg-[#373B53] hover:bg-black text-text-03 font-bold text-sm rounded-full transition-all"
               >
                 Save as Draft
               </button>
