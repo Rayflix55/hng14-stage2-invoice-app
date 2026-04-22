@@ -1,0 +1,66 @@
+[
+  {
+    "id": "RT3080",
+    "createdAt": "2021-08-18",
+    "paymentDue": "2021-08-19",
+    "description": "Graphic Design",
+    "paymentTerms": 1,
+    "clientName": "Jensen Huang",
+    "clientEmail": "jensenh@mail.com",
+    "status": "paid",
+    "senderAddress": {
+      "street": "19 Union Terrace",
+      "city": "London",
+      "postCode": "E1 3EZ",
+      "country": "United Kingdom"
+    },
+    "clientAddress": {
+      "street": "106 Kendell Street",
+      "city": "Sharrington",
+      "postCode": "NR24 5WQ",
+      "country": "United Kingdom"
+    },
+    "items": [
+      {
+        "id": "item-1",
+        "name": "Brand Guidelines",
+        "quantity": 1,
+        "price": 1800.9,
+        "total": 1800.9
+      }
+    ],
+    "total": 1800.9
+  },
+  {
+    "id": "XM9141",
+    "createdAt": "2021-08-21",
+    "paymentDue": "2021-09-20",
+    "description": "App Design",
+    "paymentTerms": 30,
+    "clientName": "Alex Grim",
+    "clientEmail": "alexgrim@mail.com",
+    "status": "pending",
+    "senderAddress": {
+      "street": "19 Union Terrace",
+      "city": "London",
+      "postCode": "E1 3EZ",
+      "country": "United Kingdom"
+    },
+    "clientAddress": {
+      "street": "84 Church Way",
+      "city": "Bradford",
+      "postCode": "BD1 9PB",
+      "country": "United Kingdom"
+    },
+    "items": [
+      {
+        "id": "item-2",
+        "name": "UI Design",
+        "quantity": 1,
+        "price": 556,
+        "total": 556
+      }
+    ],
+    "total": 556
+  }
+]

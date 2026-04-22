@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "League Spartan", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-primary: #7C5DFA;
+  --color-primary-light: #9277FF;
+  
+  /* Backgrounds */
+  --color-bg-dark: #141625;
+  --color-bg-light: #F8F8FB;
+  
+  /* Surfaces */
+  --color-card-dark: #1E2139;
+  --color-card-light: #FFFFFF;
+  
+  /* Navigation/Special Surface */
+  --color-nav-dark: #373B53;
+  --color-nav-light: #373B53;
+  
+  /* Accents */
+  --color-accent-red: #EC5757;
+  --color-accent-red-light: #FF9797;
+  
+  /* Text */
+  --color-text-01: #0C0E16; /* Dark text for light mode */
+  --color-text-02: #7E88C3; /* Muted text */
+  --color-text-03: #888EB0; /* Slightly different muted text */
+  --color-text-04: #DFE3FA; /* Light border/text color */
+  
+  /* Form Elements */
+  --color-input-bg-light: #FFFFFF;
+  --color-input-bg-dark: #1E2139;
+  --color-input-border-light: #DFE3FA;
+  --color-input-border-dark: #252945;
+  
+  /* Custom colors from design system */
+  --color-selago: #DFE3FA;
+  --color-vulcan: #0C0E16;
+  --color-ship-cove: #7E88C3;
+  --color-whisper: #F8F8FB;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-light text-text-01 transition-colors duration-300 font-sans antialiased;
+  }
+  
+  body.dark {
+    @apply bg-[#141625] text-white;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-bold tracking-[-0.03em];
+  }
+
+  /* Custom styling for date inputs to hide default icons */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+  }
+}
+
