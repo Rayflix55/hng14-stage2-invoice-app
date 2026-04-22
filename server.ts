@@ -71,7 +71,9 @@ async function startServer() {
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://0.0.0.0:${PORT}`);
+    console.log(`\n  🚀  Invoice App is running!`);
+    console.log(`  ➜  Local:   http://localhost:${PORT}`);
+    console.log(`  ➜  Network: http://0.0.0.0:${PORT}\n`);
   });
 }
 
