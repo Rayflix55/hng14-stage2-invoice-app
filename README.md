@@ -15,7 +15,7 @@ A production-grade, full-stack invoice management application engineered for hig
 
 ### **Backend**
 - **Node.js & Express**: A lightweight but scalable REST API serving as the application's data backbone.
-- **Cloud Persistence**: Production-grade data storage using **Google Firebase Cloud Firestore**, ensuring data persists across serverless deployments (Vercel).
+- **Zero-Config Persistence**: Production-grade data storage using **Browser LocalStorage**, ensuring data is ultra-fast and stays with the user even on serverless deployments (Vercel).
 - **tsx**: Modern TypeScript execution for the Node runtime, enabling ES Module support out of the box.
 
 ---
@@ -104,7 +104,7 @@ The server exposes a clean RESTful interface for external integrations:
 
 ## ⚖️ Development Philosophy
 
-This project prioritizes **Architectural Honesty**. There is no "simulated" loading or mock persistence. Every interaction in the UI translates into a real network request and a physical write to the **Firebase Cloud Firestore** database, mirroring production environments.
+This project prioritizes **Stability**. There is no "simulated" loading or mock persistence. Every interaction in the UI translates into a real write to the **Browser LocalStorage**, mirroring a production-grade single-user application.
 
 ---
 

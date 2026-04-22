@@ -4,6 +4,7 @@ import { Invoice, PaymentStatus } from '../types';
 import InvoiceCard from '../components/InvoiceCard';
 import InvoiceForm from '../components/InvoiceForm';
 import { AnimatePresence, motion } from 'motion/react';
+import { getInvoices } from '../lib/storage';
 
 function EmptyState() {
   return (
@@ -50,9 +51,8 @@ export default function InvoiceListPage() {
     fetchInvoices();
   }, []);
 
-  const fetchInvoices = async () => {
-    const res = await fetch('/api/invoices');
-    const data = await res.json();
+  const fetchInvoices = () => {
+    const data = getInvoices();
     setInvoices(data);
   };
 

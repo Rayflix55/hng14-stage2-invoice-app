@@ -8,6 +8,7 @@ import { format } from 'date-fns';
 import InvoiceForm from '../components/InvoiceForm';
 import ConfirmDeleteModal from '../components/ConfirmDeleteModal';
 import { AnimatePresence } from 'motion/react';
+import { getInvoiceById, saveInvoice, deleteInvoice as storageDeleteInvoice } from '../lib/storage';
 
 export default function InvoiceDetailPage() {
   const { id } = useParams();
@@ -20,10 +21,9 @@ export default function InvoiceDetailPage() {
     fetchInvoice();
   }, [id]);
 
-  const fetchInvoice = async () => {
-    const res = await fetch(`/api/invoices`);
-    const data = await res.json();
-    const found = data.find((inv: Invoice) => inv.id === id);
+  const fetchInvoice = () => {
+    if (!id) return;
+    const found = getInvoiceById(id);
     if (found) {
       setInvoice(found);
     } else {
@@ -31,26 +31,17 @@ export default function InvoiceDetailPage() {
     }
   };
 
-  const handleStatusUpdate = async (status: 'paid') => {
+  const handleStatusUpdate = (status: 'paid') => {
     if (!invoice) return;
-    const res = await fetch(`/api/invoices/${invoice.id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...invoice, status }),
-    });
-    if (res.ok) {
-      fetchInvoice();
-    }
+    const updatedInvoice = { ...invoice, status };
+    saveInvoice(updatedInvoice);
+    setInvoice(updatedInvoice);
   };
 
-  const handleDelete = async () => {
+  const handleDelete = () => {
     if (!invoice) return;
-    const res = await fetch(`/api/invoices/${invoice.id}`, {
-      method: 'DELETE',
-    });
-    if (res.ok) {
-      navigate('/');
-    }
+    storageDeleteInvoice(invoice.id);
+    navigate('/');
   };
 
   if (!invoice) return <div className="p-12 text-center">Loading...</div>;
@@ -71,7 +62,7 @@ export default function InvoiceDetailPage() {
         <div className="hidden sm:flex gap-2">
           <button 
             onClick={() => setIsFormOpen(true)}
-            className="px-6 py-4 bg-bg-light dark:bg-input-border-dark hover:bg-[#DFE3FA] dark:hover:bg-white dark:hover:text-text-02 text-text-02 font-bold text-sm rounded-full transition-all"
+            className="px-6 py-4 bg-bg-light dark:bg-[#252945] hover:bg-[#DFE3FA] dark:hover:bg-white dark:hover:text-text-02 text-text-02 font-bold text-sm rounded-full transition-all"
           >
             Edit
           </button>
@@ -140,7 +131,7 @@ export default function InvoiceDetailPage() {
         </div>
 
         {/* Line Items Table */}
-        <div className="bg-bg-light dark:bg-input-border-dark rounded-t-lg p-6 sm:p-8">
+        <div className="bg-bg-light dark:bg-[#252945] rounded-t-lg p-6 sm:p-8">
           {/* Desktop Headers */}
           <div className="hidden sm:grid grid-cols-4 gap-4 mb-8 text-sm text-text-02">
             <span className="col-span-2">Item Name</span>
@@ -184,7 +175,7 @@ export default function InvoiceDetailPage() {
       <footer className="fixed bottom-0 left-0 w-full p-6 bg-white dark:bg-card-dark flex items-center justify-center gap-2 sm:hidden shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
         <button 
           onClick={() => setIsFormOpen(true)}
-          className="px-6 py-4 bg-bg-light dark:bg-input-border-dark hover:bg-[#DFE3FA] dark:hover:bg-white dark:hover:text-text-02 text-text-02 font-bold text-sm rounded-full transition-all"
+          className="px-6 py-4 bg-bg-light dark:bg-[#252945] hover:bg-[#DFE3FA] dark:hover:bg-white dark:hover:text-text-02 text-text-02 font-bold text-sm rounded-full transition-all"
         >
           Edit
         </button>
