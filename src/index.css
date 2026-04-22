@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&display=swap');
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: "League Spartan", ui-sans-serif, system-ui, sans-serif;
   
@@ -12,10 +14,13 @@
   --color-bg-light: #F8F8FB;
   
   /* Surfaces */
+  --color-card-bg: var(--card-bg);
+  --color-app-bg: var(--app-bg);
   --color-card-dark: #1E2139;
   --color-card-light: #FFFFFF;
   
   /* Navigation/Special Surface */
+  --color-nav-bg: var(--nav-bg);
   --color-nav-dark: #373B53;
   --color-nav-light: #373B53;
   
@@ -24,14 +29,17 @@
   --color-accent-red-light: #FF9797;
   
   /* Text */
+  --color-text-main: var(--text-main);
   --color-text-01: #0C0E16; /* Dark text for light mode */
   --color-text-02: #7E88C3; /* Muted text */
   --color-text-03: #888EB0; /* Slightly different muted text */
   --color-text-04: #DFE3FA; /* Light border/text color */
   
   /* Form Elements */
+  --color-input-bg: var(--input-bg);
   --color-input-bg-light: #FFFFFF;
   --color-input-bg-dark: #1E2139;
+  --color-input-border: var(--input-border);
   --color-input-border-light: #DFE3FA;
   --color-input-border-dark: #252945;
   
@@ -43,12 +51,28 @@
 }
 
 @layer base {
-  body {
-    @apply bg-bg-light text-text-01 transition-colors duration-300 font-sans antialiased;
+  :root {
+    --app-bg: #F8F8FB;
+    --card-bg: #FFFFFF;
+    --nav-bg: #373B53;
+    --text-main: #0C0E16;
+    --input-bg: #FFFFFF;
+    --input-border: #DFE3FA;
   }
-  
-  body.dark {
-    @apply bg-[#141625] text-white;
+
+  .dark {
+    --app-bg: #141625;
+    --card-bg: #1E2139; /* Edit this for dark mode card background */
+    --nav-bg: #1E2139;
+    --text-main: #FFFFFF;
+    --input-bg: #1E2139;
+    --input-border: #252945;
+  }
+
+  body {
+    background-color: var(--app-bg);
+    color: var(--text-main);
+    @apply transition-colors duration-300 font-sans antialiased;
   }
   
   h1, h2, h3, h4 {
