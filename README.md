@@ -107,5 +107,4 @@ This project prioritizes **Architectural Honesty**. There is no "simulated" load
 
 ---
 
-## 👨‍💻 Developer
-Developed with precision for the **Frontend Wizards Stage 2** challenge. focus on code quality, type safety, and design fidelity.
+**Developed by Akpe Raymond Samuel (Rayflix)** *Frontend Engineer & Technical Writer* [X (Twitter)](https://x.com/web3rayflix) | [GitHub](https://github.com/rayflix55) | [LinkedIn](https://www.linkedin.com/in/akpe-samuel-993971329)# hng14-stage1b-profile-card
