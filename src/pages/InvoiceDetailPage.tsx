@@ -71,7 +71,7 @@ export default function InvoiceDetailPage() {
         <div className="hidden sm:flex gap-2">
           <button 
             onClick={() => setIsFormOpen(true)}
-            className="px-6 py-4 bg-bg-light dark:bg-[#252945] hover:bg-[#DFE3FA] dark:hover:bg-white dark:hover:text-text-02 text-text-02 font-bold text-sm rounded-full transition-all"
+            className="px-6 py-4 bg-bg-light dark:bg-input-border-dark hover:bg-[#DFE3FA] dark:hover:bg-white dark:hover:text-text-02 text-text-02 font-bold text-sm rounded-full transition-all"
           >
             Edit
           </button>
@@ -140,7 +140,7 @@ export default function InvoiceDetailPage() {
         </div>
 
         {/* Line Items Table */}
-        <div className="bg-bg-light dark:bg-[#252945] rounded-t-lg p-6 sm:p-8">
+        <div className="bg-bg-light dark:bg-input-border-dark rounded-t-lg p-6 sm:p-8">
           {/* Desktop Headers */}
           <div className="hidden sm:grid grid-cols-4 gap-4 mb-8 text-sm text-text-02">
             <span className="col-span-2">Item Name</span>
@@ -184,7 +184,7 @@ export default function InvoiceDetailPage() {
       <footer className="fixed bottom-0 left-0 w-full p-6 bg-white dark:bg-card-dark flex items-center justify-center gap-2 sm:hidden shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
         <button 
           onClick={() => setIsFormOpen(true)}
-          className="px-6 py-4 bg-bg-light dark:bg-[#252945] hover:bg-[#DFE3FA] dark:hover:bg-white dark:hover:text-text-02 text-text-02 font-bold text-sm rounded-full transition-all"
+          className="px-6 py-4 bg-bg-light dark:bg-input-border-dark hover:bg-[#DFE3FA] dark:hover:bg-white dark:hover:text-text-02 text-text-02 font-bold text-sm rounded-full transition-all"
         >
           Edit
         </button>
