@@ -109,4 +109,4 @@ This project prioritizes **Stability**. There is no "simulated" loading or mock 
 ---
 
 ## 👨‍💻 Developer
-Developed with precision for the **Frontend Wizards Stage 2** challenge. focus on code quality, type safety, and design fidelity.
+Developed with precision for the **HNG i14 Stage 2** challenge. focus on code quality, type safety, and design fidelity.
