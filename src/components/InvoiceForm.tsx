@@ -122,7 +122,7 @@ export default function InvoiceForm({ onClose, onSave, existingInvoice }: Invoic
         animate={{ x: 0 }}
         exit={{ x: '-100%' }}
         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        className="absolute top-0 left-0 w-full h-full max-w-2xl bg-card-light dark:bg-card-dark overflow-y-auto lg:top-0 lg:left-[103px] lg:h-full lg:max-w-[719px]"
+        className="absolute top-0 left-0 w-full h-full max-w-2xl bg-card-light dark:bg-card-dark overflow-y-auto lg:top-0 lg:left-25.75 lg:h-full lg:max-w-179.75"
       >
         <div className="p-8 pb-32 md:p-14">
           <button onClick={onClose} className="flex items-center gap-6 font-bold text-sm mb-8 hover:text-text-02 md:hidden">
@@ -142,7 +142,7 @@ export default function InvoiceForm({ onClose, onSave, existingInvoice }: Invoic
               <h3 className="text-primary font-bold text-sm mb-6 uppercase tracking-wider">Bill From</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="md:col-span-3">
-                  <label className="block text-sm text-text-02 mb-2 flex justify-between">
+                  <label className=" text-sm text-text-02 mb-2 flex justify-between">
                     Street Address {errors.senderStreet && <span className="text-accent-red text-xs">{errors.senderStreet}</span>}
                   </label>
                   <input 
@@ -187,7 +187,7 @@ export default function InvoiceForm({ onClose, onSave, existingInvoice }: Invoic
               <h3 className="text-primary font-bold text-sm mb-6 uppercase tracking-wider">Bill To</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="md:col-span-3">
-                  <label className="block text-sm text-text-02 mb-2 flex justify-between">
+                  <label className=" text-sm text-text-02 mb-2 flex justify-between">
                     Client's Name {errors.clientName && <span className="text-accent-red text-xs">{errors.clientName}</span>}
                   </label>
                   <input 
@@ -198,7 +198,7 @@ export default function InvoiceForm({ onClose, onSave, existingInvoice }: Invoic
                   />
                 </div>
                 <div className="md:col-span-3">
-                  <label className="block text-sm text-text-02 mb-2 flex justify-between">
+                  <label className=" text-sm text-text-02 mb-2 flex justify-between">
                     Client's Email {errors.clientEmail && <span className="text-accent-red text-xs">{errors.clientEmail}</span>}
                   </label>
                   <input 
@@ -288,7 +288,7 @@ export default function InvoiceForm({ onClose, onSave, existingInvoice }: Invoic
                 </div>
               </div>
               <div className="md:col-span-2">
-                <label className="block text-sm text-text-02 mb-2 flex justify-between">
+                <label className=" text-sm text-text-02 mb-2 flex justify-between">
                   Project Description {errors.description && <span className="text-accent-red text-xs">{errors.description}</span>}
                 </label>
                 <input 

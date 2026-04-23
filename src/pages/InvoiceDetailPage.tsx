@@ -53,29 +53,29 @@ export default function InvoiceDetailPage() {
         Go Back
       </Link>
 
-      <header className="flex items-center justify-between p-6 mb-6 bg-card-light dark:bg-card-dark rounded-lg shadow-sm sm:p-8">
+      <header className="flex items-center justify-between p-6 mb-6 bg-card-light dark:bg-card-dark rounded-lg shadow-sm sm:p-5 sm:px-8">
         <div className="flex items-center justify-between w-full sm:justify-start gap-5">
-          <span className="text-sm text-text-02 dark:text-slate-300">Status</span>
+          <span className="text-sm text-[#858BB2] dark:text-slate-300">Status</span>
           <StatusBadge status={invoice.status} />
         </div>
         
-        <div className="hidden sm:flex gap-2">
+        <div className="hidden sm:flex items-center gap-2">
           <button 
             onClick={() => setIsFormOpen(true)}
-            className="px-6 py-4 bg-bg-light dark:bg-[#252945] hover:bg-[#DFE3FA] dark:hover:bg-white dark:hover:text-text-02 text-text-02 font-bold text-sm rounded-full transition-all"
+            className="flex items-center justify-center h-12 px-6 bg-[#F9FAFE] dark:bg-input-border-dark hover:bg-[#DFE3FA] dark:hover:bg-white dark:hover:text-[#7E88C3] text-[#7E88C3] font-bold text-xs rounded-full transition-all whitespace-nowrap"
           >
             Edit
           </button>
           <button 
             onClick={() => setIsDeleteModalOpen(true)}
-            className="px-6 py-4 bg-red-500 hover:bg-red-400 text-white font-bold text-sm rounded-full transition-all"
+            className="flex items-center justify-center h-12 px-6 bg-accent-red hover:bg-accent-red-light text-white font-bold text-xs rounded-full transition-all whitespace-nowrap"
           >
             Delete
           </button>
           {invoice.status !== 'paid' && (
             <button 
               onClick={() => handleStatusUpdate('paid')}
-              className="px-6 py-4 bg-primary hover:bg-primary-light text-white font-bold text-sm rounded-full transition-all"
+              className="flex items-center justify-center h-12 px-7 bg-primary hover:bg-primary-light text-white font-bold text-xs rounded-full transition-all whitespace-nowrap"
             >
               Mark as Paid
             </button>
@@ -83,16 +83,16 @@ export default function InvoiceDetailPage() {
         </div>
       </header>
 
-      <main className="p-6 bg-card-light dark:bg-card-dark rounded-lg shadow-sm sm:p-12 mb-12 sm:mb-0">
+      <main className="p-6 bg-card-light dark:bg-card-dark rounded-lg shadow-sm sm:p-12 mb-12 sm:mb-8">
         {/* Invoice ID & Description */}
-        <div className="flex flex-col sm:flex-row sm:justify-between mb-8">
+        <div className="flex flex-col sm:flex-row sm:justify-between mb-8 sm:mb-5">
           <div className="mb-8 sm:mb-0">
-            <h1 className="text-xl font-bold uppercase mb-2">
-              <span className="text-text-02">#</span>{invoice.id}
+            <h1 className="text-xl font-bold uppercase mb-1">
+              <span className="text-text-03">#</span>{invoice.id}
             </h1>
-            <p className="text-sm text-text-02">{invoice.description}</p>
+            <p className="text-sm text-[#7E88C3]">{invoice.description}</p>
           </div>
-          <div className="text-sm text-text-02 text-left sm:text-right">
+          <div className="text-xs text-[#7E88C3] text-left sm:text-right font-medium leading-5">
             <p>{invoice.senderAddress.street}</p>
             <p>{invoice.senderAddress.city}</p>
             <p>{invoice.senderAddress.postCode}</p>
@@ -102,21 +102,21 @@ export default function InvoiceDetailPage() {
 
         {/* Client & Date Info */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12">
-          <div className="space-y-8">
+          <div className="flex flex-col justify-between">
             <div>
-              <h3 className="text-sm text-text-02 mb-3">Invoice Date</h3>
+              <h3 className="text-sm text-[#7E88C3] mb-3">Invoice Date</h3>
               <p className="text-lg font-bold">{format(new Date(invoice.createdAt), 'dd MMM yyyy')}</p>
             </div>
             <div>
-              <h3 className="text-sm text-text-02 mb-3">Payment Due</h3>
+              <h3 className="text-sm text-[#7E88C3] mb-3">Payment Due</h3>
               <p className="text-lg font-bold">{format(new Date(invoice.paymentDue), 'dd MMM yyyy')}</p>
             </div>
           </div>
 
           <div>
-            <h3 className="text-sm text-text-02 mb-3">Bill To</h3>
+            <h3 className="text-sm text-[#7E88C3] mb-3">Bill To</h3>
             <p className="text-lg font-bold mb-2">{invoice.clientName}</p>
-            <div className="text-sm text-text-02">
+            <div className="text-xs text-[#7E88C3] leading-5 font-medium">
               <p>{invoice.clientAddress.street}</p>
               <p>{invoice.clientAddress.city}</p>
               <p>{invoice.clientAddress.postCode}</p>
@@ -125,15 +125,15 @@ export default function InvoiceDetailPage() {
           </div>
 
           <div className="col-span-2 md:col-span-1">
-            <h3 className="text-sm text-text-02 mb-3">Sent to</h3>
+            <h3 className="text-sm text-[#7E88C3] mb-3">Sent to</h3>
             <p className="text-lg font-bold truncate">{invoice.clientEmail}</p>
           </div>
         </div>
 
         {/* Line Items Table */}
-        <div className="bg-bg-light dark:bg-[#252945] rounded-t-lg p-6 sm:p-8">
+        <div className="bg-[#F9FAFE] dark:bg-input-border-dark rounded-t-lg p-6 sm:p-8 sm:pb-4">
           {/* Desktop Headers */}
-          <div className="hidden sm:grid grid-cols-4 gap-4 mb-8 text-sm text-text-02">
+          <div className="hidden sm:grid grid-cols-5 gap-4 mb-8 text-xs text-[#7E88C3] font-medium">
             <span className="col-span-2">Item Name</span>
             <span className="text-center">QTY.</span>
             <span className="text-right">Price</span>
@@ -141,19 +141,19 @@ export default function InvoiceDetailPage() {
           </div>
 
           {/* Items */}
-          <div className="space-y-6">
+          <div className="space-y-8 sm:space-y-6">
             {invoice.items.map((item, idx) => (
               <div key={idx} className="flex justify-between items-center sm:grid sm:grid-cols-5 gap-4">
                 <div className="flex flex-col sm:col-span-2">
                   <span className="font-bold text-sm mb-2 sm:mb-0">{item.name}</span>
-                  <span className="sm:hidden text-sm font-bold text-text-02">
+                  <span className="sm:hidden text-sm font-bold text-[#7E88C3]">
                     {item.quantity} x {formatCurrency(item.price)}
                   </span>
                 </div>
-                <span className="hidden sm:block text-center font-bold text-sm text-text-02">
+                <span className="hidden sm:block text-center font-bold text-sm text-[#7E88C3]">
                   {item.quantity}
                 </span>
-                <span className="hidden sm:block text-right font-bold text-sm text-text-02">
+                <span className="hidden sm:block text-right font-bold text-sm text-[#7E88C3]">
                   {formatCurrency(item.price)}
                 </span>
                 <span className="font-bold text-sm text-right">
@@ -165,9 +165,9 @@ export default function InvoiceDetailPage() {
         </div>
 
         {/* Grand Total */}
-        <div className="bg-[#373B53] dark:bg-black rounded-b-lg p-6 sm:px-8 flex items-center justify-between text-white">
+        <div className="bg-[#373B53] dark:bg-black rounded-b-lg p-6 px-8 flex items-center justify-between text-white">
           <span className="text-xs font-medium">Amount Due</span>
-          <span className="text-2xl font-bold">{formatCurrency(invoice.total)}</span>
+          <span className="text-2xl font-bold tracking-tight">{formatCurrency(invoice.total)}</span>
         </div>
       </main>
 
@@ -175,20 +175,20 @@ export default function InvoiceDetailPage() {
       <footer className="fixed bottom-0 left-0 w-full p-6 bg-white dark:bg-card-dark flex items-center justify-center gap-2 sm:hidden shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
         <button 
           onClick={() => setIsFormOpen(true)}
-          className="px-6 py-4 bg-bg-light dark:bg-[#252945] hover:bg-[#DFE3FA] dark:hover:bg-white dark:hover:text-text-02 text-text-02 font-bold text-sm rounded-full transition-all"
+          className="flex items-center justify-center h-12 px-6 bg-[#F9FAFE] dark:bg-input-border-dark hover:bg-[#DFE3FA] dark:hover:bg-white dark:hover:text-[#7E88C3] text-[#7E88C3] font-bold text-xs rounded-full transition-all whitespace-nowrap"
         >
           Edit
         </button>
         <button 
           onClick={() => setIsDeleteModalOpen(true)}
-          className="px-6 py-4 bg-red-500 hover:bg-red-400 text-white font-bold text-sm rounded-full transition-all"
+          className="flex items-center justify-center h-12 px-6 bg-accent-red hover:bg-accent-red-light text-white font-bold text-xs rounded-full transition-all whitespace-nowrap"
         >
           Delete
         </button>
         {invoice.status !== 'paid' && (
           <button 
             onClick={() => handleStatusUpdate('paid')}
-            className="px-6 py-4 bg-primary hover:bg-primary-light text-white font-bold text-sm rounded-full transition-all"
+            className="flex items-center justify-center h-12 px-7 bg-primary hover:bg-primary-light text-white font-bold text-xs rounded-full transition-all whitespace-nowrap"
           >
             Mark as Paid
           </button>
